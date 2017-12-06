@@ -1639,12 +1639,15 @@ def bot(op):
                    except:
                       pass
 #-------------------------------------------
-            elif "@Aaroniero " in msg.text:
-                 tanya = msg.text.replace("@Aaroniero ","")
-                 van = (" »» AUTO RESPON «« \n")
-                 jawab = ("Jgn Tag tag!!","Berisik Oy","Apa? kalo penting pc aja, Lagi sibuk nih")
-                 jawaban = random.choice(jawab)
-                 cl.sendText(msg.to,van + jawaban)
+
+            elif "@"+cl.getProfile().displayName in msg.text:
+                try:
+                    tanya = msg.text.replace("@"+cl.getProfile().displayName,"")
+                    jawab = ("Jgn Tag Si "+cl.getProfile().displayName+"!!","Dia lagi sibuk njir","Ada apa tag tag gue?","Iya, ada apa? penting kah?)
+                    jawaban = random.choice(jawab)
+                    cl.sendText(msg.to,jawaban)
+                except:
+			pass
 #------------------------------------------
 #-------------------[ResponBOT]---------------------------
             elif msg.text in ["Ping"]:

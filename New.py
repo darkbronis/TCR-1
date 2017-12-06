@@ -2373,6 +2373,14 @@ def bot(op):
                   tts.save('tts.mp3')
                   cl.sendAudio(msg.to,'tts.mp3')
 #-------------------------------------------------
+
+            elif "Siapa " in msg.text:
+    		tanya = msg.text.replace("Siapa ","")
+    		jawab = ("Oh dia yang anak hasil dari nafsu bejat, jiahaha"," Dia si maho itu","Dia om pedo","Gue aja ga kenal","Oh yang idiot itu","gua gak kenal, yuk kenalan")
+    		jawaban = random.choice(jawab)
+		tts = gTTS(text=jawaban, lang='id')
+		tts.save('tts.mp3')
+		cl.sendAudio(msg.to,'tts.mp3')
 #-----------------------------------------------
             elif msg.text in ["pap","Pap"]:
                         cl.sendImageWithURL(msg.to, "https://images.google.co.id/imgres?imgurl=https%3A%2F%2F3.bp.blogspot.com%2F-VjvtpFc4mak%2FVz_WuJ_x3uI%2FAAAAAAAAAEI%2FXY9UICe817094VN-vezO7jUhKsRrEHU3wCLcB%2Fs1600%2Fhqdefault.jpg&imgrefurl=http%3A%2F%2Fmbahbeni.blogspot.com%2F2016%2F05%2Fhantu-mata-besar-di-bawah-pohon-besar.html&docid=0eICNlm6uAAzbM&tbnid=VXtPSCgJseqC0M%3A&vet=1&w=480&h=360&source=sh%2Fx%2Fim")

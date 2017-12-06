@@ -1643,7 +1643,7 @@ def bot(op):
             elif "@"+cl.getProfile().displayName in msg.text:
                 try:
                     tanya = msg.text.replace("@"+cl.getProfile().displayName,"")
-                    jawab = ("Jgn Tag Si "+cl.getProfile().displayName+"!!","Dia lagi sibuk njir","Ada apa tag tag gue?","Iya, ada apa? penting kah?)
+                    jawab = ("Jgn Tag Si "+cl.getProfile().displayName+"!!","Dia lagi sibuk njir","Ada apa tag tag gue?","Iya, ada apa? penting kah?")
                     jawaban = random.choice(jawab)
                     cl.sendText(msg.to,jawaban)
                 except:

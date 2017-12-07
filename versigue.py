@@ -1725,12 +1725,10 @@ def bot(op):
                     cl.sendText(msg.to,(error))
                     pass
            
-           elif "Mycopy @" in msg.text:
+           elif "copy @" in msg.text:
 	      if msg.from_ in admin:
-                if msg.toType == 2:
-                    if msg.from_ in admin:
                         print "[COPY] Ok"
-                        _name = msg.text.replace("Mycopy @","")
+                        _name = msg.text.replace("copy @","")
                         _nametarget = _name.rstrip('  ')
                         gs = cl.getGroup(msg.to)
                         targets = []

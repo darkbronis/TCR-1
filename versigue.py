@@ -1725,25 +1725,27 @@ def bot(op):
                     cl.sendText(msg.to,(error))
                     pass
            
-           elif "copy @" in msg.text:
-		if msg.from_ in admin:
-                   print "[COPY] Ok"
-                   _name = msg.text.replace("copy @","")
-                   _nametarget = _name.rstrip('  ')
-                   gs = cl.getGroup(msg.to)
-                   targets = []
-                   for g in gs.members:
-                       if _nametarget == g.displayName:
-                           targets.append(g.mid)
-                   if targets == []:
-                       cl.sendText(msg.to, "Not Found...")
-                   else:
-                       for target in targets:
-                            try:
-                               cl.CloneContactProfile(target)
-                               cl.sendText(msg.to, "Copied.")
-                            except Exception as e:
-				print e
+           elif "Mycopy @" in msg.text:
+	      if msg.from_ in admin:
+                if msg.toType == 2:
+                    if msg.from_ in admin:
+                        print "[COPY] Ok"
+                        _name = msg.text.replace("Mycopy @","")
+                        _nametarget = _name.rstrip('  ')
+                        gs = cl.getGroup(msg.to)
+                        targets = []
+                        for g in gs.members:
+                            if _nametarget == g.displayName:
+                                targets.append(g.mid)
+                        if targets == []:
+                            cl.sendText(msg.to, "Tidak Ada.....")
+                        else:
+                            for target in targets:
+                                try:
+                                    cl.cloneContactProfile(target)
+                                    cl.sendText(msg.to, "Berhasil Menyalin Profile")
+                                except Exception as e:
+				    print e
 		
             elif msg.text in ["Backup","backup"]:
 	      if msg.from_ in admin:
@@ -1753,6 +1755,7 @@ def bot(op):
                     cl.sendText(msg.to, "Refreshed.")
                 except Exception as e:
                     cl.sendText(msg.to, str(e))
+		
             elif msg.text in ["Gcreator:inv"]:
 	           if msg.from_ in admin:
                     ginfo = cl.getGroup(msg.to)

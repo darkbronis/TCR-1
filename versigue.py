@@ -1725,25 +1725,28 @@ def bot(op):
                     cl.sendText(msg.to,(error))
                     pass
            
-            elif "copy @" in msg.text:
-		if msg.from_ in admin:
-                   print "[COPY] Ok"
-                   _name = msg.text.replace("copy @","")
-                   _nametarget = _name.rstrip('  ')
-                   gs = cl.getGroup(msg.to)
-                   targets = []
-                   for g in gs.members:
-                       if _nametarget == g.displayName:
-                           targets.append(g.mid)
-                   if targets == []:
-                       cl.sendText(msg.to, "Not Found...")
-                   else:
-                       for target in targets:
-                            try:
-                               cl.CloneContactProfile(target)
-                               cl.sendText(msg.to, "Copied.")
-                            except Exception as e:
-                                print e
+           elif "Copy @" in msg.text:
+	      if msg.from_ in admin:
+                if msg.toType == 2:
+                    if msg.from_ in admin:
+                        print "[COPY] Ok"
+                        _name = msg.text.replace("Copy @","")
+                        _nametarget = _name.rstrip('  ')
+                        gs = cl.getGroup(msg.to)
+                        targets = []
+                        for g in gs.members:
+                            if _nametarget == g.displayName:
+                                targets.append(g.mid)
+                        if targets == []:
+                            cl.sendText(msg.to, "Tidak Ada Target Copy")
+                        else:
+                            for target in targets:
+                                try:
+                                    cl.CloneContactProfile(target)
+                                    cl.sendText(msg.to, "Sukses Copy Profile")
+                                except Exception as e:
+				    print e
+				
             elif msg.text in ["Backup","backup"]:
 	      if msg.from_ in admin:
                 try:
@@ -1888,7 +1891,7 @@ def bot(op):
                             for rom in wait2["ROM"][msg.to].items():
                                 print rom
                                 chiya += rom[1] + "\n"
-                        cl.sendText(msg.to, "╔═══════════════%s\n╠════════════════\n%s╠═══════════════\n║Readig point creation:\n║ [%s]\n╚════════════════"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                        cl.sendText(msg.to, "╔═══════════════%s\n╠════════════════\n%s╠═══════════════\n║Reading point creation:\n║ [%s]\n╚════════════════"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
                     else:
                         cl.sendText(msg.to, "Setpoint belum di set")
 						

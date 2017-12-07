@@ -30,13 +30,11 @@ sys.setdefaultencoding('utf-8')
 
 helpMessage ="""●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞ɆsᵽȺđȺ ŦɇȺm♞♞♞\n●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n
 
-➤  .say <Masukkan teks>
-➤  .googlesay <Masukkan teks>
-➤  .youtube <masukkan teks judulnya>
-➤  .creator
+➤  Say	   <Masukkan teks>
+➤  Youtube <masukkan teks judulnya>
+➤  Creator <Creator bot>
 ➤  /apakah <kata - kata>
-➤   love | Contoh = Orang love Orang
-➤  .quotes
+➤  love | Contoh = Orang love Orang
 ➤  .cek <TanggalLahir> | Contoh = .cek 27-10-2002
 ➤  .wiki-id [ Wikipedia Indonesia ]
 ➤  .wiki-en [ Wikipedia English ]
@@ -48,7 +46,7 @@ helpMessage ="""●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●\n♞♞♞Ɇs�
 ●▬▬▬▬▬▬▬▬▬▬▬▬▬▬●
 ➤  Adminadd @ [ Admin Add ]
 ➤  Adminrm @ [Remove Admin]
-➤  .adminlist [Admin List]
+➤  Adminlist [Admin List]
 ➤  Keluar [Mengeluarkan Bot ]
 ➤  Copy @ [mengcopy akun target]
 ➤  Mybackup
@@ -117,9 +115,26 @@ mimic = {
     "status":False,
     "target":{}
     }
+wait3 = {
+    "copy":False,
+    "copy2":"target",
+    "target":{}
+    }
+
+res = {
+    'num':{},
+    'us':{},
+    'au':{},
+}
 
 setTime = {}
 setTime = wait2['setTime']
+
+contact = cl.getProfile()
+backup = cl.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
 
 def upload_tempimage(client):
      '''
@@ -292,70 +307,9 @@ def bot(op):
                 else:
                     cl.sendText(op.param1,str(wait["message"]))
 
-        #------Open QR Kick start------#
-        if op.type == 10:
-           if wait["ProtectQR"] == True:
-               if op.param2 not in Bots:
-                   G = cl.getGroup(op.param1)
-                   G = ki.getGroup(op.param1)
-                   G.preventJoinByTicket = True
-                   ki.kickoutFromGroup(op.param1,[op.param2])
-                   cl.updateGroup(G)
-        #------Open QR Kick finish-----#
-
-        #------Invite User Kick start------#
-        if op.type == 13:
-           if wait["Protectguest"] == True:
-               if op.param2 not in Bots:
-                  random.choice(KAC).cancelGroupInvitation(op.param1,[op.param3])
-                  random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-        #------Invite User Kick Finish------#
-
+        
            
-        if op.type == 13:
-                if op.param3 in mid:
-                    if op.param2 in Amid:
-                        G = ki.getGroup(op.param1)
-                        G.preventJoinByTicket = False
-                        ki.updateGroup(G)
-                        Ticket = ki.reissueGroupTicket(op.param1)
-                        cl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                        G.preventJoinByTicket = True
-                        ki.updateGroup(G)
-                        Ticket = ki.reissueGroupTicket(op.param1)
-
-                if op.param3 in Amid:
-                    if op.param2 in Bmid:
-                        X = kk.getGroup(op.param1)
-                        X.preventJoinByTicket = False
-                        kk.updateGroup(X)
-                        Ti = kk.reissueGroupTicket(op.param1)
-                        ki.acceptGroupInvitationByTicket(op.param1,Ti)
-                        X.preventJoinByTicket = True
-                        kk.updateGroup(X)
-                        Ti = kk.reissueGroupTicket(op.param1)
-
-                if op.param3 in Bmid:
-                    if op.param2 in Cmid:
-                        X = kc.getGroup(op.param1)
-                        X.preventJoinByTicket = False
-                        kc.updateGroup(X)
-                        Ti = kc.reissueGroupTicket(op.param1)
-                        kk.acceptGroupInvitationByTicket(op.param1,Ti)
-                        X.preventJoinByTicket = True
-                        kc.updateGroup(X)
-                        Ti = kc.reissueGroupTicket(op.param1)
-
-                if op.param3 in Cmid:
-                    if op.param2 in mid:
-                        X = cl.getGroup(op.param1)
-                        X.preventJoinByTicket = False
-                        cl.updateGroup(X)
-                        Ti = cl.reissueGroupTicket(op.param1)
-                        kc.acceptGroupInvitationByTicket(op.param1,Ti)
-                        X.preventJoinByTicket = True
-                        cl.updateGroup(X)
-                        Ti = cl.reissueGroupTicket(op.param1)
+        
 
         if op.type == 13:
             print op.param1

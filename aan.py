@@ -1559,7 +1559,7 @@ def bot(op):
                 cl.sendText(msg.to,"line://home/post?userMid="+mid+"&postId="+cl.new_post(tl_text)["result"]["post"]["postInfo"]["postId"])
             
 #=================================================================
-            elif msg.text in ["Bankai:on","bankai:on"]:
+            elif msg.text in ["Bankai1:on","bankai1:on"]:
               if msg.from_ in admin:
                 if wait["protectionOn"] == True:
                     if wait["lang"] == "JP":
@@ -1598,7 +1598,7 @@ def bot(op):
                         cl.sendText(msg.to,"welcome message on\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
                         cl.sendText(msg.to,"welcome message on")
-            elif msg.text in ["Blockqr:on","blockqr:on"]:
+            elif msg.text in ["Blockqr1:on","blockqr:on"]:
               if msg.from_ in admin:
                 if wait["qr"] == True:
                     if wait["lang"] == "JP":
@@ -1637,7 +1637,7 @@ def bot(op):
                         cl.sendText(msg.to,"Bankai mode di Nonaktifkan\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
                         cl.sendText(msg.to,"Bankai mode di Nonaktifkan\n\n"+ datetime.today().strftime('%H:%M:%S'))
-            elif "Namelock:on" in msg.text:
+            elif "Namelock1:on" in msg.text:
               if msg.from_ in admin:
                 if msg.to in wait['pname']:
                     cl.sendText(msg.to,"Turned On.")
@@ -1666,7 +1666,7 @@ def bot(op):
 				except:
 					pass
  #================================================================           
-            elif msg.text in ["Invite user"]:
+            elif msg.text in ["Invite user1"]:
               if msg.from_ in admin:
                  wait["winvite"] = True
                  cl.sendText(msg.to,"send contact")
@@ -1876,7 +1876,7 @@ def bot(op):
                     else:
                         pass
 #-----------------------------------------------
-            elif msg.text in ["Backup:on"]:
+            elif msg.text in ["Backup1:on"]:
               if msg.from_ in admin:
                 if wait["Backup"] == True:
                     if wait["lang"] == "JP":
@@ -1889,7 +1889,7 @@ def bot(op):
                         cl.sendText(msg.to,"backup has been active\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
                         cl.sendText(msg.to,"backup has been enable\n\n"+ datetime.today().strftime('%H:%M:%S'))
-            elif msg.text in ["Backup:off"]:
+            elif msg.text in ["Backup1:off"]:
               if msg.from_ in admin:
                 if wait["Backup"] == False:
                     if wait["lang"] == "JP":
